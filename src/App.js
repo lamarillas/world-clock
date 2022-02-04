@@ -1,5 +1,8 @@
 import { useState } from 'react';
 import './App.css';
+import CssBaseline from '@mui/material/CssBaseline';
+import Container from '@mui/material/Container';
+import Button from '@mui/material/Button';
 import SearchForm from './components/SearchForm';
 import Ubicaciones from './components/Ubicaciones';
 
@@ -67,13 +70,13 @@ function App() {
   }
 
   return (
-    <div>
-      <button onClick={onFetchTimeZones}>Fetch All</button>
+    <Container maxWidth="sm">
+      <Button variant="contained" onClick={onFetchTimeZones}>Fetch All</Button>
       <SearchForm onSearchLocation={onSearchLocationHandler}></SearchForm>
       <div>
         <Ubicaciones locations={dataLocations} />
       </div>
-    </div>
+    </Container>
 
   );
 }

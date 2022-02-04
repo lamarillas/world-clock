@@ -1,3 +1,5 @@
+import { Grid, Card, CardContent, Typography, Badge } from '@mui/material';
+
 const DateLocation = (props) => {
     
     var arrayOfWeekdays = ["Dom", "Lun", "Mar", "Mie", "Jue", "Vie", "Sab"]
@@ -19,17 +21,17 @@ const DateLocation = (props) => {
     const monthDayDateLocation = new Date(props.date).getDay() - 1;
     
     return (
-        <div className='data'>
-            <div className='time'>
-                {/* 2:23 p */}
-                {/* { hourDateLocation }:{ minuteDateLocation } */}
-                {  formatAMPM(new Date(props.date)) }
-            </div>
-            <div className='date'>
-                {/* Wed, Feb 2 */}
-                {arrayOfWeekdays[dayNameDateLocation] } , { monthNameDateLocation } { monthDayDateLocation }
-            </div>
-        </div>
+        <Card>
+            <CardContent>
+                <Typography gutterBottom variant="h5" component="div">
+                    {/* {  formatAMPM(new Date(props.date)) } */}
+                    { props.date }
+                </Typography>
+                <Typography variant="body2" color="text.secondary">
+                    {arrayOfWeekdays[dayNameDateLocation] } , { monthNameDateLocation } { monthDayDateLocation }
+                </Typography>
+            </CardContent>
+        </Card>
     )
 }
 

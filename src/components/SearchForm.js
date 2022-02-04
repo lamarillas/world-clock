@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Button from '@mui/material/Button';
 
 
 const SearchForm = (props) => {
@@ -32,7 +33,7 @@ const SearchForm = (props) => {
                     </div>
                 </div>
                 <div>
-                    <button onClick={locationClickHandler}>Add location</button>
+                    <Button variant="contained" onClick={locationClickHandler}>Add location</Button>
                 </div>
             </form>
         );
