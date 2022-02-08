@@ -1,38 +1,31 @@
 import { Grid, Card, CardContent, Typography, Badge } from '@mui/material';
+import moment from 'moment';
+import Moment from 'react-moment';
 
 const DateLocation = (props) => {
     
     var arrayOfWeekdays = ["Dom", "Lun", "Mar", "Mie", "Jue", "Vie", "Sab"]
-    const formatAMPM = (date) => {
-        let hours = date.getHours();
-        let minutes = date.getMinutes();
-        let ampm = hours >= 12 ? 'pm' : 'am';
-        hours = hours % 12;
-        hours = hours ? hours : 12;
-        minutes = minutes.toString().padStart(2, '0');
-        let strTime = hours + ':' + minutes + ' ' + ampm;
-        return strTime;
-      }
-
-    // const hourDateLocation = new Date(props.date).getHours();
-    // const minuteDateLocation = new Date(props.date).getMinutes();
-    const dayNameDateLocation = new Date(props.date).getDay()
-    const monthNameDateLocation = new Date(props.date).toLocaleString('en-US', { month: 'short' });
-    const monthDayDateLocation = new Date(props.date).getDay() - 1;
-    
-    return (
-        <Card>
-            <CardContent>
-                <Typography gutterBottom variant="h5" component="div">
-                    {/* {  formatAMPM(new Date(props.date)) } */}
-                    { props.date }
-                </Typography>
-                <Typography variant="body2" color="text.secondary">
-                    {arrayOfWeekdays[dayNameDateLocation] } , { monthNameDateLocation } { monthDayDateLocation }
-                </Typography>
-            </CardContent>
-        </Card>
-    )
+    const currentDateTime = moment(props.date);
+     
+    return  <div className="data">
+                <div className="time">
+                    <span className="th">{ currentDateTime.hour() }</span>
+                    <span className="ts">:</span>
+                    <span className="tm">{ currentDateTime.minute() }</span>
+                    <span className="ampm">a</span>
+                </div>
+                <div className="date">{ currentDateTime.format("MMM Do YY") }</div>
+                <div className="data-end">
+                    <div className="time">
+                    <span className="separ">-</span>
+                    <span className="th">1</span>
+                    <span className="ts">:</span>
+                    <span className="tm">00</span>
+                    <span className="ampm">a</span>
+                    </div>
+                    <div className="date">Mon, Feb 7</div>
+                </div>
+            </div>;
 }
 
 

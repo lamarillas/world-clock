@@ -1,61 +1,47 @@
-import { Grid, Card, CardContent, Typography, Badge } from '@mui/material';
+import moment from 'moment';
 import DateLocation from './DateLocation';
+import HourLine from './HourLine';
 // import './Ubicacion.css';
 
 const Ubicacion = (props) => {
-
+    const uid = props.location.uid;
+  
     const [ country, location ] = props.location.timezone.split('/');
 
-    return (
-        <div className='container'>
-            
-            {/* <div style={{position: 'absolute', height: '0'}}>
-                <div className='buttons'>
-                    <a className='close' href='#' > X </a>
+    const dateLocation = props.location.datetime.replace(props.location.utc_offset, '');
+    const currentDateTime = moment(dateLocation);
+
+    const removeLocationHandler = () => {
+        props.onRemoveLocationsHandler(uid);
+    }
+
+    //console.log(uid);
+    return  <div lid="4013704" className="container srt" alias="0" data-itemidx="0">
+                
+                <div style={{position: "absolute", height: "0px"}}>
+                    <div className="buttons">
+                        <button className="close" onClick={removeLocationHandler} title="Remove from the list"> X </button>
+                    </div>
                 </div>
-            </div> 
-            
-            <div id='home' className='icon'>
-                <span></span>
-            </div>*/}
-            
+                
+                <div className="icon" id="home" original-title="Home Time Zone (GMT-7 = MST)">
+                    <span>+0</span>
+                </div>
+                
+                <div className="location">
+                    <div className="city">
+                        <b>{ location + ' ' }</b>
+                        <small original-title="MST = GMT-7">{ props.location.abbreviation }</small>
+                    </div>
+                    <div className="country">{ country }</div>
+                </div>
 
-            <Grid container spacing={2}>
-                <Grid item xs="auto">
+                <DateLocation date={dateLocation}></DateLocation>
 
-                    <Card>
-                        <CardContent>
-                            <Typography gutterBottom variant="h5" component="div">
-                                <Badge badgeContent={ props.location.abbreviation} color="primary">
-                                    { location + ' ' } 
-                                </Badge>
-                                
-                            </Typography>
-                            {/* <small>{ props.location.abbreviation }</small> */}
-                            <Typography variant="body2" color="text.secondary">
-                                { country }
-                            </Typography>                            
-                        </CardContent>
+                <HourLine currentDateTime={currentDateTime}></HourLine>
 
-                    </Card>
 
-                  
-                </Grid>
-                <Grid item xs="auto">
-               
-                    <DateLocation date={ props.location.datetime }></DateLocation>
-                  
-                </Grid>  
-            </Grid>
- 
-
-            {/* <div className='hourline'>
-
-            </div> */}
-
-        </div>
-    );
+            </div>;
 }
-
 
 export default Ubicacion;

@@ -1,23 +1,17 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './App.css';
-import CssBaseline from '@mui/material/CssBaseline';
-import Container from '@mui/material/Container';
-import Button from '@mui/material/Button';
 import SearchForm from './components/SearchForm';
 import Ubicaciones from './components/Ubicaciones';
 
 function App() {
   
-  
-
-  //let locations = [];
-
   const [locations, setLocations] = useState([]);
+  const [dataLocations, setDataLocations] = useState([])
 
-  const onFetchTimeZones = () => {
+  const getAllTimeZones = () => {
 
-    fetch('http://worldtimeapi.org/api/timezone').then(respose => {
-      return respose.json()
+    fetch('http://worldtimeapi.org/api/timezone').then(response => {
+      return response.json();
     }).then(data => {
       
       
@@ -31,54 +25,54 @@ function App() {
         }
       });
 
-      //locations = locationsTransformed;
       setLocations(locationsTransformed);
-      //console.log(locations);
     })
-
   }
 
-  const [dataLocations, setDataLocations] = useState([])
-
-  const onSearchLocationHandler = (location) => {
-    console.log('App.js', location);
-    console.log(location);
-
+   const onSearchLocationHandler = (location) => {
+    
     if(!locations.length) {
       console.warn('El objeto Locations esta vacio');
     } else {
-      const _location = locations.find(elem => elem.location == location);
+      const _location = locations.find(elem => elem.location.trim().toLowerCase() == location.trim().toLowerCase() );
       if(!_location) {
         console.warn(`La localidad ${location} no se encuentra en la lista.`);
       } else {
-        console.log('Location finded ', _location);
 
+        //console.log('Location finded ', _location);
 
         fetch(`http://worldtimeapi.org/api/timezone/${_location.country}/${_location.location}`).then( response => {
           return response.json()
         }).then( data => {
 
-          setDataLocations(oldArray => [...oldArray, data]);
+          setDataLocations(oldArray => [...oldArray, {...data, uid: (new Date).getTime()}]);
 
         })
       }
     }
-    
-
-    
-
   }
 
-  return (
-    <Container maxWidth="sm">
-      <Button variant="contained" onClick={onFetchTimeZones}>Fetch All</Button>
-      <SearchForm onSearchLocation={onSearchLocationHandler}></SearchForm>
-      <div>
-        <Ubicaciones locations={dataLocations} />
-      </div>
-    </Container>
+  const removeAppLocationsHandler = (uid) => {
+    var newDataLocations = dataLocations.filter(e => e.uid != uid);
+    setDataLocations(newDataLocations);
+  }
 
-  );
+  useEffect(() => {
+    getAllTimeZones();
+  }, []);
+    
+
+  
+
+  return  <div className="wrapper">
+            <div id="locations_wrapper">
+              <div id="locations">
+                {/* <Button variant="contained" onClick={getAllTimeZones}>Fetch All</Button> */}
+                <SearchForm onSearchLocation={onSearchLocationHandler}></SearchForm>
+                <Ubicaciones locations={dataLocations}  onRemoveAppLocationsHandler={removeAppLocationsHandler} />
+              </div>
+            </div>
+          </div>;
 }
 
 export default App;
