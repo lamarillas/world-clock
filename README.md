@@ -342,3 +342,18 @@ Reloj Mundial.
 `Wake`,
 `Wallis`
 
+## Extra Kudos
+
+Explica de manera clara y sucinta tu proceso de pensamiento en los siguientes puntos:
+
+- ¿Que te gustaría agregar o eliminar de este componente para hacerlo mejor?
+    Un autocomplete y que la barra de seleccion de la hora se pudiera mover.
+
+- ¿Cual sería la mejor manera de hacerlo reutilizable/embedible?
+    Descargarlo y usarlo son la necesidad de dependecias de terceros.
+
+- Asumiendo que tienes suficiente tiempo, ¿Que te tomaría para llevarlo a un estado de calidad apto para producción?
+    5 a 6 dias.
+
+- Si no tuvieras acceso a World Time API, ¿como hubieras diseñado el backend?
+    Con NodeJs y Express para obtener los datos necesarios de algun servidor.
