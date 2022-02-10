@@ -1,70 +1,344 @@
-# Getting Started with Create React App
+# Technical Assesment (World Clock)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Reloj Mundial.
 
-## Available Scripts
+### `Instalacion`
 
-In the project directory, you can run:
+1. Descarga el proyecto de este repositorio.
+2. Desde la carpeta **world-clock** ejecutar `npm install`.
+3. Una vez instaladas todas las dependencias proceder con el comando `npm start`, esto abrira el navegador con la aplicacion cargada.
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### `Uso`
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+1. En el unico Input. Ingresar una region valida para el api `http://worldtimeapi.org/`. Presionar `enter`.
+2. Las regiones se agregaran.
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+**Nota: Al no contar con un autocomplete en el input, podria ser dificil encontrar regiones existentes en el api.**
 
-### `npm run build`
+**Por lo cual dejo esta pequeña lista de regiones validas**.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+`Abidjan`,
+`Accra`,
+`Algiers`,
+`Bissau`,
+`Cairo`,
+`Casablanca`,
+`Ceuta`,
+`El_Aaiun`,
+`Johannesburg`,
+`Juba`,
+`Khartoum`,
+`Lagos`,
+`Maputo`,
+`Monrovia`,
+`Nairobi`,
+`Ndjamena`,
+`Sao_Tome`,
+`Tripoli`,
+`Tunis`,
+`Windhoek`,
+`Adak`,
+`Anchorage`,
+`Araguaina`,
+`Asuncion`,
+`Atikokan`,
+`Bahia`,
+`Bahia_Banderas`,
+`Barbados`,
+`Belem`,
+`Belize`,
+`Blanc-Sablon`,
+`Boa_Vista`,
+`Bogota`,
+`Boise`,
+`Cambridge_Bay`,
+`Campo_Grande`,
+`Cancun`,
+`Caracas`,
+`Cayenne`,
+`Chicago`,
+`Chihuahua`,
+`Costa_Rica`,
+`Creston`,
+`Cuiaba`,
+`Curacao`,
+`Danmarkshavn`,
+`Dawson`,
+`Dawson_Creek`,
+`Denver`,
+`Detroit`,
+`Edmonton`,
+`Eirunepe`,
+`El_Salvador`,
+`Fort_Nelson`,
+`Fortaleza`,
+`Glace_Bay`,
+`Goose_Bay`,
+`Grand_Turk`,
+`Guatemala`,
+`Guayaquil`,
+`Guyana`,
+`Halifax`,
+`Havana`,
+`Hermosillo`,
+`Inuvik`,
+`Iqaluit`,
+`Jamaica`,
+`Juneau`,
+`La_Paz`,
+`Lima`,
+`Los_Angeles`,
+`Maceio`,
+`Managua`,
+`Manaus`,
+`Martinique`,
+`Matamoros`,
+`Mazatlan`,
+`Menominee`,
+`Merida`,
+`Metlakatla`,
+`Mexico_City`,
+`Miquelon`,
+`Moncton`,
+`Monterrey`,
+`Montevideo`,
+`Nassau`,
+`New_York`,
+`Nipigon`,
+`Nome`,
+`Noronha`,
+`Nuuk`,
+`Ojinaga`,
+`Panama`,
+`Pangnirtung`,
+`Paramaribo`,
+`Phoenix`,
+`Port-au-Prince`,
+`Port_of_Spain`,
+`Porto_Velho`,
+`Puerto_Rico`,
+`Punta_Arenas`,
+`Rainy_River`,
+`Rankin_Inlet`,
+`Recife`,
+`Regina`,
+`Resolute`,
+`Rio_Branco`,
+`Santarem`,
+`Santiago`,
+`Santo_Domingo`,
+`Sao_Paulo`,
+`Scoresbysund`,
+`Sitka`,
+`St_Johns`,
+`Swift_Current`,
+`Tegucigalpa`,
+`Thule`,
+`Thunder_Bay`,
+`Tijuana`,
+`Toronto`,
+`Vancouver`,
+`Whitehorse`,
+`Winnipeg`,
+`Yakutat`,
+`Yellowknife`,
+`Casey`,
+`Davis`,
+`DumontDUrville`,
+`Macquarie`,
+`Mawson`,
+`Palmer`,
+`Rothera`,
+`Syowa`,
+`Troll`,
+`Vostok`,
+`Almaty`,
+`Amman`,
+`Anadyr`,
+`Aqtau`,
+`Aqtobe`,
+`Ashgabat`,
+`Atyrau`,
+`Baghdad`,
+`Baku`,
+`Bangkok`,
+`Barnaul`,
+`Beirut`,
+`Bishkek`,
+`Brunei`,
+`Chita`,
+`Choibalsan`,
+`Colombo`,
+`Damascus`,
+`Dhaka`,
+`Dili`,
+`Dubai`,
+`Dushanbe`,
+`Famagusta`,
+`Gaza`,
+`Hebron`,
+`Ho_Chi_Minh`,
+`Hong_Kong`,
+`Hovd`,
+`Irkutsk`,
+`Jakarta`,
+`Jayapura`,
+`Jerusalem`,
+`Kabul`,
+`Kamchatka`,
+`Karachi`,
+`Kathmandu`,
+`Khandyga`,
+`Kolkata`,
+`Krasnoyarsk`,
+`Kuala_Lumpur`,
+`Kuching`,
+`Macau`,
+`Magadan`,
+`Makassar`,
+`Manila`,
+`Nicosia`,
+`Novokuznetsk`,
+`Novosibirsk`,
+`Omsk`,
+`Oral`,
+`Pontianak`,
+`Pyongyang`,
+`Qatar`,
+`Qostanay`,
+`Qyzylorda`,
+`Riyadh`,
+`Sakhalin`,
+`Samarkand`,
+`Seoul`,
+`Shanghai`,
+`Singapore`,
+`Srednekolymsk`,
+`Taipei`,
+`Tashkent`,
+`Tbilisi`,
+`Tehran`,
+`Thimphu`,
+`Tokyo`,
+`Tomsk`,
+`Ulaanbaatar`,
+`Urumqi`,
+`Ust-Nera`,
+`Vladivostok`,
+`Yakutsk`,
+`Yangon`,
+`Yekaterinburg`,
+`Yerevan`,
+`Azores`,
+`Bermuda`,
+`Canary`,
+`Cape_Verde`,
+`Faroe`,
+`Madeira`,
+`Reykjavik`,
+`South_Georgia`,
+`Stanley`,
+`Adelaide`,
+`Brisbane`,
+`Broken_Hill`,
+`Darwin`,
+`Eucla`,
+`Hobart`,
+`Lindeman`,
+`Lord_Howe`,
+`Melbourne`,
+`Perth`,
+`Sydney`,
+`Amsterdam`,
+`Andorra`,
+`Astrakhan`,
+`Athens`,
+`Belgrade`,
+`Berlin`,
+`Brussels`,
+`Bucharest`,
+`Budapest`,
+`Chisinau`,
+`Copenhagen`,
+`Dublin`,
+`Gibraltar`,
+`Helsinki`,
+`Istanbul`,
+`Kaliningrad`,
+`Kiev`,
+`Kirov`,
+`Lisbon`,
+`London`,
+`Luxembourg`,
+`Madrid`,
+`Malta`,
+`Minsk`,
+`Monaco`,
+`Moscow`,
+`Oslo`,
+`Paris`,
+`Prague`,
+`Riga`,
+`Rome`,
+`Samara`,
+`Saratov`,
+`Simferopol`,
+`Sofia`,
+`Stockholm`,
+`Tallinn`,
+`Tirane`,
+`Ulyanovsk`,
+`Uzhgorod`,
+`Vienna`,
+`Vilnius`,
+`Volgograd`,
+`Warsaw`,
+`Zaporozhye`,
+`Zurich`,
+`Chagos`,
+`Christmas`,
+`Cocos`,
+`Kerguelen`,
+`Mahe`,
+`Maldives`,
+`Mauritius`,
+`Reunion`,
+`Apia`,
+`Auckland`,
+`Bougainville`,
+`Chatham`,
+`Chuuk`,
+`Easter`,
+`Efate`,
+`Enderbury`,
+`Fakaofo`,
+`Fiji`,
+`Funafuti`,
+`Galapagos`,
+`Gambier`,
+`Guadalcanal`,
+`Guam`,
+`Honolulu`,
+`Kiritimati`,
+`Kosrae`,
+`Kwajalein`,
+`Majuro`,
+`Marquesas`,
+`Nauru`,
+`Niue`,
+`Norfolk`,
+`Noumea`,
+`Pago_Pago`,
+`Palau`,
+`Pitcairn`,
+`Pohnpei`,
+`Port_Moresby`,
+`Rarotonga`,
+`Tahiti`,
+`Tarawa`,
+`Tongatapu`,
+`Wake`,
+`Wallis`
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
