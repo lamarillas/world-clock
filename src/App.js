@@ -7,6 +7,7 @@ function App() {
   
   const [locations, setLocations] = useState([]);
   const [dataLocations, setDataLocations] = useState([])
+  const [dateTimeHome, setDateTimeHome] = useState('');
 
   const getAllTimeZones = () => {
 
@@ -45,15 +46,29 @@ function App() {
           return response.json()
         }).then( data => {
 
-          setDataLocations(oldArray => [...oldArray, {...data, uid: (new Date).getTime()}]);
+          if(!dataLocations.length) {
+            
+            setDateTimeHome(data.datetime.replace(data.utc_offset, ''));
+            setDataLocations(oldArray => [...oldArray, {...data, _uid: (new Date).getTime(), _dateTimeHome: data.datetime.replace(data.utc_offset, ''), isHome: true}]);
+          
+          } else {
 
+            setDataLocations(oldArray => [...oldArray, {...data, _uid: (new Date).getTime(), _dateTimeHome: dateTimeHome, isHome: false}]);
+          }
+
+          
+          console.log('Data Locations', dataLocations);
         })
       }
     }
   }
 
-  const removeAppLocationsHandler = (uid) => {
-    var newDataLocations = dataLocations.filter(e => e.uid != uid);
+  const removeAppLocationsHandler = (_uid) => {
+    var newDataLocations = dataLocations.filter(e => e._uid != _uid);
+    if(newDataLocations.length) {
+      const firstDataLocation = newDataLocations[0];
+      setDateTimeHome(firstDataLocation.datetime.replace(firstDataLocation.utc_offset, ''));
+    }
     setDataLocations(newDataLocations);
   }
 

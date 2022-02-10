@@ -4,21 +4,30 @@ import HourLine from './HourLine';
 // import './Ubicacion.css';
 
 const Ubicacion = (props) => {
-    const uid = props.location.uid;
+    const _uid = props.location._uid;
   
     const [ country, location ] = props.location.timezone.split('/');
 
     const dateLocation = props.location.datetime.replace(props.location.utc_offset, '');
     const currentDateTime = moment(dateLocation);
 
+    const dateTimeHome = moment(props.location._dateTimeHome);
+    const offsetHour = currentDateTime.diff(dateTimeHome, 'hours');
+
+    console.log('isAfter ', currentDateTime.isAfter(dateTimeHome, 'days'));
+
+    console.log('offsetHour ', offsetHour);
+
+
     const removeLocationHandler = () => {
-        props.onRemoveLocationsHandler(uid);
+        props.onRemoveLocationsHandler(_uid);
     }
 
-    //console.log(uid);
+    //console.log('Ubicacion Date Time ', props.location);
+
     return  <div lid="4013704" className="container srt" alias="0" data-itemidx="0">
                 
-                <div style={{position: "absolute", height: "0px"}}>
+                <div style={{position: "absolute", height: "0px", display: props.location.isHome ? 'none' : 'block'}}>
                     <div className="buttons">
                         <button className="close" onClick={removeLocationHandler} title="Remove from the list"> X </button>
                     </div>
@@ -38,7 +47,7 @@ const Ubicacion = (props) => {
 
                 <DateLocation date={dateLocation}></DateLocation>
 
-                <HourLine currentDateTime={currentDateTime}></HourLine>
+                <HourLine currentDateTime={currentDateTime} offsetHour={offsetHour} ></HourLine>
 
 
             </div>;

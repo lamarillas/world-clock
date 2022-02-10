@@ -1,53 +1,70 @@
-const am = 12;
-const pm = 12;
+import DayOfWeek from './DayOfWeek';
+import Hour from './Hour';
 
-const HourLine = ({currentDateTime}) => {
+const HourLine = ({currentDateTime, offsetHour}) => {
 
-    //let amCurrentDateTime = {...currentDateTime};
+    const arrayHourList = [...Array(24)].map((e, i) => {
+        return {
+            hour: (i <= 12 ? i : i - (12)),
+            ampm: (i < 12 ? 'am' : 'pm'),
+            longHour: i
+        }
+    });
+
+    const firstIndex = (offsetHour < 0) ?  24 - Math.abs(offsetHour) : 24 + offsetHour;
 
     return  <div className="hourline">
                 <ul className="_AP">
-
                 {
-                    [...Array(am)].map((e, i) =>
-                        {                      
-                            if(i === 0) {
-                                return <li key={i} className="tod_c tod_selected" t="2/7/2022 00:00">
-                                            <div>{ currentDateTime.format('dd') }</div>
-                                            <b>{ currentDateTime.format('MMM') }</b>
-                                            <i>{ currentDateTime.format('DD') }</i>
-                                        </li>
+                    arrayHourList.map((e, i) =>
+                        {   
+                            // Sin diferencia de HORA - OK
+                            if(offsetHour == 0) {
+
+                                if(i <= firstIndex) {
+                                    if(e.longHour === 0)
+                                        return <DayOfWeek hr={e} dateTime={currentDateTime} ></DayOfWeek>                                                
+                                    return <Hour hr={e}></Hour>
+                                }
+                            
+                            } else if(offsetHour > 0 && i >= offsetHour) { 
+                                return <Hour hr={e}></Hour>
+
+                            } else if(offsetHour < 0 && (i > 23 - (Math.abs(offsetHour) + 0))) {
+                                return <Hour hr={e}></Hour>
                             }
-                               
-                            return <li key={i} className="tod_n">
-                                        <b>{ i }</b>
-                                        <u>am</u>
-                                        <em>MST</em>
-                                        <em></em>
-                                    </li>
                         }
                     )    
                 }
+
+                {/************ Segunda Barrida ************/}
                 {
-                    [...Array(pm)].map((e, i) =>
-                    {                      
-                        if(i === 11) {
-                            return <li key={i} className="tod_n tod_boundary">
-                                        <b>{ i }</b>
-                                        <u>pm</u>
-                                        <em>MST</em>
-                                        <em></em>
-                                    </li>
-                        } 
-                           
-                        return <li key={i} className="tod_n">
-                                    <b>{  i == 0 ? 12 : i }</b>
-                                    <u>pm</u>
-                                    <em>MST</em>
-                                    <em></em>
-                                </li>
-                    }
-                    )    
+                    arrayHourList.map((e, i) =>
+                    {        
+                        // Con diferencia positiva. - OK
+                        if(offsetHour > 0) {
+
+                            if(i < offsetHour) {
+                                if(e.longHour === 0) {
+                                    // Borde Redondo Inicio de Dia **** SIGUIENTE - OK
+                                    const cloneNextDay = currentDateTime.clone();
+                                    const nextDay = cloneNextDay.add(1, 'days');
+
+                                    return <DayOfWeek hr={e} dateTime={nextDay} ></DayOfWeek>                                                
+                                }
+                                return <Hour hr={e}></Hour>                                        
+                            }
+
+                        } else if(offsetHour < 0) { 
+                            // Con diferencia negativa. - OK
+                            if(i <= 23 - (Math.abs(offsetHour) + 0)) {
+                                if(e.longHour === 0)
+                                    return <DayOfWeek hr={e} dateTime={currentDateTime} ></DayOfWeek>                                                
+
+                                return <Hour hr={e}></Hour>        
+                            }
+                        }                        
+                    })    
                 }                                        
                 </ul>
             </div>;
