@@ -27,7 +27,7 @@ const Ubicaciones = (props) => {
         inset: 11px ${props => (props.posBandForward.toString())}px 11px ${props => (props.posBandStart.toString())}px;
     `;
     
-    console.log('Ubicaciones');
+    //console.log('Ubicaciones');
 
     return  <div className="clientarea blink" style={{padding: "0 0px"}} data-listidx="0">
                 

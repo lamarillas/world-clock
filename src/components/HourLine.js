@@ -23,15 +23,15 @@ const HourLine = ({currentDateTime, offsetHour}) => {
 
                                 if(i <= firstIndex) {
                                     if(e.longHour === 0)
-                                        return <DayOfWeek hr={e} dateTime={currentDateTime} ></DayOfWeek>                                                
-                                    return <Hour hr={e}></Hour>
+                                        return <DayOfWeek key={e.longHour} hr={e} dateTime={currentDateTime} ></DayOfWeek>                                                
+                                    return <Hour key={e.longHour} hr={e}></Hour>
                                 }
                             
                             } else if(offsetHour > 0 && i >= offsetHour) { 
-                                return <Hour hr={e}></Hour>
+                                return <Hour key={e.longHour} hr={e}></Hour>
 
-                            } else if(offsetHour < 0 && (i > 23 - (Math.abs(offsetHour) + 0))) {
-                                return <Hour hr={e}></Hour>
+                            } else if(offsetHour < 0 && (i > 23 - (Math.abs(offsetHour) + 1))) {
+                                return <Hour key={e.longHour} hr={e}></Hour>
                             }
                         }
                     )    
@@ -50,18 +50,18 @@ const HourLine = ({currentDateTime, offsetHour}) => {
                                     const cloneNextDay = currentDateTime.clone();
                                     const nextDay = cloneNextDay.add(1, 'days');
 
-                                    return <DayOfWeek hr={e} dateTime={nextDay} ></DayOfWeek>                                                
+                                    return <DayOfWeek key={e.longHour} hr={e} dateTime={nextDay} ></DayOfWeek>                                                
                                 }
-                                return <Hour hr={e}></Hour>                                        
+                                return <Hour key={e.longHour} hr={e}></Hour>                                        
                             }
 
                         } else if(offsetHour < 0) { 
                             // Con diferencia negativa. - OK
-                            if(i <= 23 - (Math.abs(offsetHour) + 0)) {
+                            if(i <= 23 - (Math.abs(offsetHour) + 1)) {
                                 if(e.longHour === 0)
-                                    return <DayOfWeek hr={e} dateTime={currentDateTime} ></DayOfWeek>                                                
+                                    return <DayOfWeek key={e.longHour} hr={e} dateTime={currentDateTime} ></DayOfWeek>                                                
 
-                                return <Hour hr={e}></Hour>        
+                                return <Hour key={e.longHour} hr={e}></Hour>        
                             }
                         }                        
                     })    

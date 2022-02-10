@@ -1,7 +1,6 @@
 import moment from 'moment';
 import DateLocation from './DateLocation';
 import HourLine from './HourLine';
-// import './Ubicacion.css';
 
 const Ubicacion = (props) => {
     const _uid = props.location._uid;
@@ -13,10 +12,13 @@ const Ubicacion = (props) => {
 
     const dateTimeHome = moment(props.location._dateTimeHome);
     const offsetHour = currentDateTime.diff(dateTimeHome, 'hours');
+    //const offsetHour = dateTimeHome.diff(currentDateTime, 'hours');
 
-    console.log('isAfter ', currentDateTime.isAfter(dateTimeHome, 'days'));
 
-    console.log('offsetHour ', offsetHour);
+
+    //console.log('isAfter ', currentDateTime.isAfter(dateTimeHome, 'days'));
+
+    //console.log('offsetHour ', offsetHour);
 
 
     const removeLocationHandler = () => {
@@ -27,7 +29,7 @@ const Ubicacion = (props) => {
 
     return  <div lid="4013704" className="container srt" alias="0" data-itemidx="0">
                 
-                <div style={{position: "absolute", height: "0px", display: props.location.isHome ? 'none' : 'block'}}>
+                <div style={{position: "absolute", height: "0px"}}>
                     <div className="buttons">
                         <button className="close" onClick={removeLocationHandler} title="Remove from the list"> X </button>
                     </div>

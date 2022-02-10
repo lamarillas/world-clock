@@ -57,19 +57,28 @@ function App() {
           }
 
           
-          console.log('Data Locations', dataLocations);
+          //console.log('Data Locations', dataLocations);
         })
       }
     }
   }
 
   const removeAppLocationsHandler = (_uid) => {
+
+    var _validaHome = dataLocations.find(e => e._uid == _uid)
+    
+    if(!!_validaHome?.isHome && dataLocations.length > 1)
+      return;
+
     var newDataLocations = dataLocations.filter(e => e._uid != _uid);
+
     if(newDataLocations.length) {
       const firstDataLocation = newDataLocations[0];
       setDateTimeHome(firstDataLocation.datetime.replace(firstDataLocation.utc_offset, ''));
     }
+
     setDataLocations(newDataLocations);
+
   }
 
   useEffect(() => {
